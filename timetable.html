@@ -23,45 +23,70 @@
     </table>
     <button id="backButton">Back</button>
 
-    <div id="classModal" class="modal">
-        <div class="modal-content">
-            <span id="closeModal" class="close">&times;</span>
-            <h2>Class Details</h2>
-            <div>
-                <label>Subject:</label>
-                <input type="text" id="modalSubject" />
-            </div>
-            <div>
-                <label>Classroom:</label>
-                <input type="text" id="modalClassroom" />
-            </div>
-            <div>
-                <label>Teacher:</label>
-                <input type="text" id="modalTeacher" />
-            </div>
-            <div>
-                <label>Start Time:</label>
-                <input type="time" id="modalStartTime" />
-            </div>
-            <div>
-                <label>End Time:</label>
-                <input type="time" id="modalEndTime" />
-            </div>
-            <div>
-                <label>Day of the Week:</label>
-                <select id="modalDayOfWeek">
-                    <option value="Monday">Monday</option>
-                    <option value="Tuesday">Tuesday</option>
-                    <option value="Wednesday">Wednesday</option>
-                    <option value="Thursday">Thursday</option>
-                    <option value="Friday">Friday</option>
-                </select>
-            </div>
-            <button id="saveChangesButton">Save Changes</button>
-        </div>
+    <!-- Modal de Detalhes da Aula -->
+<div id="classModal" class="modal">
+    <div class="modal-content">
+        <span id="closeModal" class="close">&times;</span>
+        <h2>Detalhes da Aula</h2>
+        <p><strong>Disciplina:</strong> <span id="modalSubject"></span></p>
+        <p><strong>Sala:</strong> <span id="modalClassroom"></span></p>
+        <p><strong>Professor:</strong> <span id="modalTeacher"></span></p>
+        <p><strong>Hora de Início:</strong> <span id="modalStartTime"></span></p>
+        <p><strong>Hora de Término:</strong> <span id="modalEndTime"></span></p>
+        <p><strong>Dia da Semana:</strong> <span id="modalDayOfWeek"></span></p>
+        
+        <!-- Botão para editar a aula -->
+        <button id="editClassButton" class="btn">Editar</button>
     </div>
-    
+</div>
 
     <script src="script-timetable.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const classModal = document.getElementById('classModal');
+    const closeModal = document.getElementById('closeModal');
+    const editClassButton = document.getElementById('editClassButton');
+
+    // Carregar o horário salvo no localStorage
+    let timetable = JSON.parse(localStorage.getItem('timetable')) || [];
+
+    function openClassModal(classInfo) {
+        // Preencher o modal com os dados da aula
+        document.getElementById('modalSubject').textContent = classInfo.subject || '';
+        document.getElementById('modalClassroom').textContent = classInfo.classroom || '';
+        document.getElementById('modalTeacher').textContent = classInfo.teacher || '';
+        document.getElementById('modalStartTime').textContent = classInfo.startTime || '00:00';
+        document.getElementById('modalEndTime').textContent = classInfo.endTime || '00:00';
+        document.getElementById('modalDayOfWeek').textContent = classInfo.dayOfWeek || 'Monday';
+
+        // Exibir o modal
+        classModal.style.display = "block";
+
+        // Adicionar listener ao botão de editar
+        editClassButton.onclick = () => {
+            // Redirecionar para a página de edição passando o índice da aula na URL
+            window.location.href = `edit-class.html?index=${classInfo.index}`;
+        };
+    }
+
+    // Código de fechamento do modal
+    closeModal.onclick = () => {
+        classModal.style.display = "none";
+    };
+
+    // Exemplo de como abrir o modal com uma aula (aqui você chamaria isso ao clicar em uma aula na tabela)
+    function setupTimetable() {
+        // Simulação de clique em uma aula, chamando o openClassModal com o objeto classInfo correto
+        timetable.forEach((classInfo, index) => {
+            classInfo.index = index; // Adicionando o índice da aula ao objeto
+            // Quando uma aula for clicada, chama openClassModal
+            document.getElementById(`class-${index}`).addEventListener('click', () => openClassModal(classInfo));
+        });
+    }
+
+    setupTimetable();
+});
+
+    </script>
 </body>
 </html>
