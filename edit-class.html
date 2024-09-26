@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Aula</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Editar Aula</h1>
+        <form id="editClassForm">
+            <label for="subject">Disciplina:</label>
+            <input type="text" id="subject" name="subject" required>
+            
+            <label for="classroom">Sala:</label>
+            <input type="text" id="classroom" name="classroom" required>
+
+            <label for="teacher">Professor:</label>
+            <input type="text" id="teacher" name="teacher" required>
+
+            <label for="startTime">Hora de Início:</label>
+            <input type="time" id="startTime" name="startTime" required>
+
+            <label for="endTime">Hora de Término:</label>
+            <input type="time" id="endTime" name="endTime" required>
+
+            <label for="dayOfWeek">Dia da Semana:</label>
+            <select id="dayOfWeek" name="dayOfWeek" required>
+                <option value="Monday">Segunda-feira</option>
+                <option value="Tuesday">Terça-feira</option>
+                <option value="Wednesday">Quarta-feira</option>
+                <option value="Thursday">Quinta-feira</option>
+                <option value="Friday">Sexta-feira</option>
+            </select>
+
+            <button type="submit">Salvar Alterações</button>
+        </form>
+    </div>
+
+    <script src="script-edit-class.js"></script>
+</body>
+</html>

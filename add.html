@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Classes and Tasks</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Add Classes and Tasks</h1>
+    <form id="timetableForm">
+        <h2>Add Class</h2>
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" required>
+        <label for="classroom">Classroom:</label>
+        <input type="text" id="classroom" required>
+        <label for="teacher">Teacher:</label>
+        <input type="text" id="teacher" required>
+        <label for="startTime">Start Time:</label>
+        <input type="time" id="startTime" required>
+        <label for="endTime">End Time:</label>
+        <input type="time" id="endTime" required>
+        <label for="dayOfWeek">Day of the Week:</label>
+        <select id="dayOfWeek" required>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+        </select>
+        <label for="notes">Notes:</label>
+        <textarea id="notes"></textarea>
+        <button type="submit">Add Class</button>
+    </form>
+
+    <form id="taskForm">
+        <h2>Add Task</h2>
+        <label for="taskSubject">Related Class:</label>
+        <input type="text" id="taskSubject" required>
+        <label for="taskDeadline">Deadline:</label>
+        <input type="date" id="taskDeadline" required>
+        <label for="taskNotes">Notes:</label>
+        <textarea id="taskNotes"></textarea>
+        <button type="submit">Add Task</button>
+    </form>
+
+    <button id="viewTimetableButton">View Timetable</button>
+    <button id="backButton">Back</button>
+
+    <script src="script-add.js"></script>
+</body>
+</html>

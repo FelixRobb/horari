@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Timetable</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Your Timetable</h1>
+    <table id="timetableTable">
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+            </tr>
+        </thead>
+        <tbody id="timetableBody"></tbody>
+    </table>
+    <button id="backButton">Back</button>
+
+    <div id="classModal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" class="close">&times;</span>
+            <h2>Class Details</h2>
+            <div>
+                <label>Subject:</label>
+                <input type="text" id="modalSubject" />
+            </div>
+            <div>
+                <label>Classroom:</label>
+                <input type="text" id="modalClassroom" />
+            </div>
+            <div>
+                <label>Teacher:</label>
+                <input type="text" id="modalTeacher" />
+            </div>
+            <div>
+                <label>Start Time:</label>
+                <input type="time" id="modalStartTime" />
+            </div>
+            <div>
+                <label>End Time:</label>
+                <input type="time" id="modalEndTime" />
+            </div>
+            <div>
+                <label>Day of the Week:</label>
+                <select id="modalDayOfWeek">
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                </select>
+            </div>
+            <button id="saveChangesButton">Save Changes</button>
+        </div>
+    </div>
+    
+
+    <script src="script-timetable.js"></script>
+</body>
+</html>
